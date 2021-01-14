@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="'layout/LayoutPadrao'"
-	xmlns:brewer="https://brewer.algaworks.com">
+	xmlns:brewer="http://brewer.algaworks.com">
 	
 <head>
 	<title>Cadastro de cerveja</title>
@@ -22,10 +22,8 @@
 
 	<div class="container-fluid">
 
-		<th:block th:include="fragments/MensagemSucesso"></th:block>
-
 		<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
-			<th:block th:include="fragments/MensagensErroValidacao"></th:block>
+			<brewer:message/>
 	
 			<div class="row">
 				<div class="col-sm-2  form-group" brewer:classforerror="sku">
