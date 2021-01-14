@@ -1,8 +1,8 @@
-var Brewer = Brewer|| {};
+var Brewer = Brewer || {};
 
-Brewer.estiloCadastroRapido = (function(){
-
-	function EstiloCadastroRapido(){
+Brewer.EstiloCadastroRapido = (function() {
+	
+	function EstiloCadastroRapido() {
 		this.modal = $('#modalCadastroRapidoEstilo');
 		this.botaoSalvar = this.modal.find('.js-modal-cadastro-estilo-salvar-btn');
 		this.form = this.modal.find('form');
@@ -11,23 +11,23 @@ Brewer.estiloCadastroRapido = (function(){
 		this.containerMensagemErro = $('.js-mensagem-cadastro-rapido-estilo');
 	}
 	
-	EstiloCadastroRapido.prototype.iniciar = function(){
+	EstiloCadastroRapido.prototype.iniciar = function() {
 		this.form.on('submit', function(event) { event.preventDefault() });
 		this.modal.on('shown.bs.modal', onModalShow.bind(this));
-		this.modal.on('hide.bs.modal', onModalClose.bind(this));
+		this.modal.on('hide.bs.modal', onModalClose.bind(this))
 		this.botaoSalvar.on('click', onBotaoSalvarClick.bind(this));
 	}
 	
 	function onModalShow() {
 		this.inputNomeEstilo.focus();
 	}
-
+	
 	function onModalClose() {
 		this.inputNomeEstilo.val('');
 		this.containerMensagemErro.addClass('hidden');
 		this.form.find('.form-group').removeClass('has-error');
 	}
-
+	
 	function onBotaoSalvarClick() {
 		var nomeEstilo = this.inputNomeEstilo.val().trim();
 		$.ajax({
@@ -55,12 +55,10 @@ Brewer.estiloCadastroRapido = (function(){
 	}
 	
 	return EstiloCadastroRapido;
+	
 }());
 
 $(function() {
-	
 	var estiloCadastroRapido = new Brewer.EstiloCadastroRapido();
 	estiloCadastroRapido.iniciar();
-
-	
 });
