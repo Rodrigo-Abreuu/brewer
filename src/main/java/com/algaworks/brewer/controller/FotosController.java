@@ -15,17 +15,18 @@ import com.algaworks.brewer.storage.FotoStorageRunnable;
 @RestController
 @RequestMapping("/fotos")
 public class FotosController {
-	
-	@Autowired
-	private FotoStorage fotoStorage; 
 
+	@Autowired
+	private FotoStorage fotoStorage;
+	
 	@PostMapping
-	public DeferredResult<FotoDTO> upload(@RequestParam("files[]")MultipartFile[] files){
+	public DeferredResult<FotoDTO> upload(@RequestParam("files[]") MultipartFile[] files) {
 		DeferredResult<FotoDTO> resultado = new DeferredResult<>();
-		
+
 		Thread thread = new Thread(new FotoStorageRunnable(files, resultado, fotoStorage));
 		thread.start();
 		
 		return resultado;
 	}
+	
 }

@@ -14,19 +14,17 @@ import com.algaworks.brewer.storage.FotoStorage;
 
 public class FotoStorageLocal implements FotoStorage {
 
-	
-	private static final Logger logger = LoggerFactory.getLogger(FotoStorageLocal.class); 
+	private static final Logger logger = LoggerFactory.getLogger(FotoStorageLocal.class);
 	
 	private Path local;
 	private Path localTemporario;
 	
-	public FotoStorageLocal(){
-		this(getDefault().getPath(System.getenv("Home"),".brewerfotos"));
-		
-		
+	public FotoStorageLocal() {
+		this(getDefault().getPath(System.getenv("HomePath"), ".brewerfotos"));
+		criarPastas();
 	}
 	
-	public FotoStorageLocal(Path path){
+	public FotoStorageLocal(Path path) {
 		this.local = path;
 		criarPastas();
 	}
@@ -37,19 +35,19 @@ public class FotoStorageLocal implements FotoStorage {
 			this.localTemporario = getDefault().getPath(this.local.toString(), "temp");
 			Files.createDirectories(this.localTemporario);
 			
-			if (logger.isDebugEnabled()){
+			if (logger.isDebugEnabled()) {
 				logger.debug("Pastas criadas para salvar fotos.");
-				logger.debug("Pasta default: "+this.local.toAbsolutePath());
-				logger.debug("Pasta temporária: "+this.localTemporario.toAbsolutePath());
+				logger.debug("Pasta default: " + this.local.toAbsolutePath());
+				logger.debug("Pasta temporária: " + this.localTemporario.toAbsolutePath());
 			}
-		} catch (IOException e){
-			throw new RuntimeException("Erro cirando pasta para salvar foto", e);
-			
+		} catch (IOException e) {
+			throw new RuntimeException("Erro criando pasta para salvar foto", e);
 		}
 	}
 
 	@Override
 	public void salvarTemporariamente(MultipartFile[] files) {
-		System.out.println(">>Salvando a foto temporariamente...");		
+		System.out.println(">>>> salvando a foto temporariamente...");
 	}
+	
 }

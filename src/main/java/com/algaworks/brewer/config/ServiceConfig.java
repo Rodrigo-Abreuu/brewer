@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.algaworks.brewer.service.CadastroCervejaService;
+import com.algaworks.brewer.storage.FotoStorage;
 import com.algaworks.brewer.storage.local.FotoStorageLocal;
 
 @Configuration
@@ -12,7 +13,8 @@ import com.algaworks.brewer.storage.local.FotoStorageLocal;
 public class ServiceConfig {
 
 	@Bean
-	public FotoStorageLocal fotoStorageLocal(){
+	public FotoStorage fotoStorage() {
 		return new FotoStorageLocal();
 	}
-}
+	
+}	
