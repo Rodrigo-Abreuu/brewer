@@ -20,35 +20,35 @@ public class PageWrapper<T> {
 		this.uriBuilder = ServletUriComponentsBuilder.fromRequest(httpServletRequest);
 	}
 	
-	public List<T> getConteudo(){
+	public List<T> getConteudo() {
 		return page.getContent();
 	}
 	
-	public boolean isVazia(){
+	public boolean isVazia() {
 		return page.getContent().isEmpty();
 	}
 	
-	public int getAtual(){
+	public int getAtual() {
 		return page.getNumber();
 	}
 	
-	public boolean isPrimeira(){
+	public boolean isPrimeira() {
 		return page.isFirst();
 	}
 	
-	public boolean isUltima(){
+	public boolean isUltima() {
 		return page.isLast();
 	}
 	
-	public int getTotal(){
+	public int getTotal() {
 		return page.getTotalPages();
 	}
 	
-	public String urlParaPagina(int pagina){
+	public String urlParaPagina(int pagina) {
 		return uriBuilder.replaceQueryParam("page", pagina).build(true).encode().toUriString();
 	}
 	
-	public String urlOrdenada(String propriedade){
+	public String urlOrdenada(String propriedade) {
 		UriComponentsBuilder uriBuilderOrder = UriComponentsBuilder
 				.fromUriString(uriBuilder.build(true).encode().toUriString());
 		
@@ -57,25 +57,25 @@ public class PageWrapper<T> {
 		return uriBuilderOrder.replaceQueryParam("sort", valorSort).build(true).encode().toUriString();
 	}
 	
-	public String inverterDirecao (String propriedade){
+	public String inverterDirecao(String propriedade) {
 		String direcao = "asc";
 		
-		Order order = page.getSort() != null ? page.getSort().getOrderFor(propriedade) : null; 		
-		if (order != null){
+		Order order = page.getSort() != null ? page.getSort().getOrderFor(propriedade) : null;
+		if (order != null) {
 			direcao = Sort.Direction.ASC.equals(order.getDirection()) ? "desc" : "asc";
 		}
 		
 		return direcao;
 	}
 	
-	public boolean descendente(String propriedade){
+	public boolean descendente(String propriedade) {
 		return inverterDirecao(propriedade).equals("asc");
 	}
 	
-	public boolean ordenada (String propriedade){
-		Order order = page.getSort() != null ? page.getSort().getOrderFor(propriedade) : null;
+	public boolean ordenada(String propriedade) {
+		Order order = page.getSort() != null ? page.getSort().getOrderFor(propriedade) : null; 
 		
-		if (order == null){
+		if (order == null) {
 			return false;
 		}
 		
