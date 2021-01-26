@@ -51,7 +51,7 @@ public class Usuario implements Serializable {
 	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
 	}
-	@NotNull(message = "Data de nascimento é obrigatório")
+	
 	@Column(name = "data_nascimento")
 	private LocalDate dataNascimento;
 	
