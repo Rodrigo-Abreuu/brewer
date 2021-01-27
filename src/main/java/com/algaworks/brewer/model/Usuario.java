@@ -46,7 +46,7 @@ public class Usuario implements Serializable {
 	
 	private Boolean ativo;
 	
-	@NotNull(message = "Selecione pelo menos um grupo")
+	//@NotNull(message = "Selecione pelo menos um grupo")
 	@ManyToMany
 	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "codigo_usuario")
 			, inverseJoinColumns = @JoinColumn(name = "codigo_grupo"))
@@ -55,6 +55,7 @@ public class Usuario implements Serializable {
 	public List<Grupo> getGrupos() {
 		return grupos;
 	}
+	
 	public void setGrupos(List<Grupo> grupos) {
 		this.grupos = grupos;
 	}
@@ -65,36 +66,47 @@ public class Usuario implements Serializable {
 	public Long getCodigo() {
 		return codigo;
 	}
+	
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public String getSenha() {
 		return senha;
 	}
+	
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
 	public Boolean getAtivo() {
 		return ativo;
 	}
+	
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
+	
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
+	
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
@@ -102,6 +114,7 @@ public class Usuario implements Serializable {
 	public String getConfirmacaoSenha() {
 		return confirmacaoSenha;
 	}
+	
 	public void setConfirmacaoSenha(String confirmacaoSenha) {
 		this.confirmacaoSenha = confirmacaoSenha;
 	}
@@ -129,6 +142,5 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-	
 
 }
