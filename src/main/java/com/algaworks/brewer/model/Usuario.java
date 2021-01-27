@@ -52,6 +52,10 @@ public class Usuario implements Serializable {
 			, inverseJoinColumns = @JoinColumn(name = "codigo_grupo"))
 	private List<Grupo> grupos;
  	
+	public boolean isNovo(){
+		return codigo == null;
+	}
+	
 	public List<Grupo> getGrupos() {
 		return grupos;
 	}
