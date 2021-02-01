@@ -10,4 +10,5 @@ public interface UsuariosQueries {
 	public Optional<Usuario> porEmailEAtivo(String email);
 	
 	public List<String> permissoes(Usuario usuario);
+	
 }
