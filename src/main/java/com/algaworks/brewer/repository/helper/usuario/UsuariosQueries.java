@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.algaworks.brewer.model.Usuario;
+import com.algaworks.brewer.repository.filter.UsuarioFilter;
 
 public interface UsuariosQueries {
 
@@ -11,4 +12,5 @@ public interface UsuariosQueries {
 	
 	public List<String> permissoes(Usuario usuario);
 	
+	public List<Usuario> filtrar (UsuarioFilter filtro);
 }
