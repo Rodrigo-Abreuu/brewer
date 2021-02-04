@@ -1,5 +1,6 @@
 package com.algaworks.brewer.session;
 
+import java.util.Optional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,19 +25,28 @@ public class TabelaItensVenda {
 	}
 	
 	public void adicionarItem(Cerveja cerveja, Integer quantidade){
-		ItemVenda itenVenda = new ItemVenda();
-		itenVenda.setCerveja(cerveja);
-		itenVenda.setQuantidade(quantidade);
-		itenVenda.setValorUnitario(cerveja.getValor());
+		Optional<ItemVenda> itemVendaOptional = itens.stream()
+			.filter(i -> i.getCerveja().equals(cerveja))
+			.findAny();
 		
-		itens.add(itenVenda);
+		ItemVenda itemVenda = null;
+		if(itemVendaOptional.isPresent()){
+			itemVenda = itemVendaOptional.get();
+			itemVenda.setQuantidade(itemVenda.getQuantidade() + quantidade);
+		} else {
+			ItemVenda itenVenda = new ItemVenda();
+			itenVenda.setCerveja(cerveja);
+			itenVenda.setQuantidade(quantidade);
+			itenVenda.setValorUnitario(cerveja.getValor());
+			itens.add(0, itenVenda);
+		}
 	}
 	
 	public int total(){
 		return itens.size();
 	}
 
-	public Object getItens() {
+	public List<ItemVenda> getItens() {
 		return itens;
 	}
 	
