@@ -12,7 +12,7 @@ import com.algaworks.brewer.model.ItemVenda;
 
 @SessionScope
 @Component
-public class TabelasitensSession {
+public class TabelasItensSession {
 
 	private Set<TabelaItensVenda> tabelas = new HashSet<>();
 

@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.algaworks.brewer.model.Cerveja;
 import com.algaworks.brewer.repository.Cervejas;
-import com.algaworks.brewer.session.TabelasitensSession;
+import com.algaworks.brewer.session.TabelasItensSession;
 
 @Controller
 @RequestMapping("/vendas")
@@ -24,7 +24,7 @@ public class VendasController {
 	private Cervejas cervejas;
 	
 	@Autowired
-	private TabelasitensSession tabelasItens;
+	private TabelasItensSession tabelasItens;
 	
 	@GetMapping("/nova")
 	public ModelAndView nova(){
