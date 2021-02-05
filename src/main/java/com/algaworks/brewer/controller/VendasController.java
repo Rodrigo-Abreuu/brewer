@@ -19,45 +19,46 @@ import com.algaworks.brewer.session.TabelasItensSession;
 @Controller
 @RequestMapping("/vendas")
 public class VendasController {
-
+	
 	@Autowired
 	private Cervejas cervejas;
 	
 	@Autowired
-	private TabelasItensSession tabelasItens;
+	private TabelasItensSession tabelaItens;
 	
 	@GetMapping("/nova")
-	public ModelAndView nova(){
+	public ModelAndView nova() {
 		ModelAndView mv = new ModelAndView("venda/CadastroVenda");
-		mv.addObject("uuid", UUID.randomUUID().toString()); 
+		mv.addObject("uuid", UUID.randomUUID().toString());
 		return mv;
 	}
-
+	
 	@PostMapping("/item")
-	public ModelAndView adicionarItem(Long codigoCerveja, String uuid){
+	public ModelAndView adicionarItem(Long codigoCerveja, String uuid) {
 		Cerveja cerveja = cervejas.findOne(codigoCerveja);
-		tabelasItens.adicionarItem(uuid, cerveja, 1);
+		tabelaItens.adicionarItem(uuid, cerveja, 1);
 		return mvTabelaItensVenda(uuid);
 	}
 	
 	@PutMapping("/item/{codigoCerveja}")
 	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoCerveja") Cerveja cerveja
-			, Integer quantidade, String uuid){
-		tabelasItens.alterarQuantidadeItens(uuid, cerveja, quantidade);
+			, Integer quantidade, String uuid) {
+		tabelaItens.alterarQuantidadeItens(uuid, cerveja, quantidade);
 		return mvTabelaItensVenda(uuid);
 	}
-				   
+	
 	@DeleteMapping("/item/{uuid}/{codigoCerveja}")
 	public ModelAndView excluirItem(@PathVariable("codigoCerveja") Cerveja cerveja
-			, @PathVariable String uuid){
-		tabelasItens.excluirItem(uuid, cerveja);
+			, @PathVariable String uuid) {
+		tabelaItens.excluirItem(uuid, cerveja);
 		return mvTabelaItensVenda(uuid);
 	}
 
-	private ModelAndView mvTabelaItensVenda(String uuid){
+	private ModelAndView mvTabelaItensVenda(String uuid) {
 		ModelAndView mv = new ModelAndView("venda/TabelaItensVenda");
-		mv.addObject("itens", tabelasItens.getItens(uuid));
+		mv.addObject("itens", tabelaItens.getItens(uuid));
+		mv.addObject("valorTotal", tabelaItens.getValorTotal(uuid));
 		return mv;
 	}
-	
+
 }

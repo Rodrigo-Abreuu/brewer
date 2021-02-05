@@ -61,15 +61,15 @@
 			
 			<button type="submit" class="btn  btn-primary">Pesquisar</button>
 		</form>
-
+		
 		<div class="aw-datatable-toolbar">
-			<button class="btn btn-default btn-xs js-status-btn disabled" data:status="ATIVAR" data:url="@{/usuarios/status}">
+			<button class="btn btn-default  btn-xs  js-status-btn  disabled" data:status="ATIVAR" data:url="@{/usuarios/status}">
 				<span>Ativar</span>
 			</button>
 			
-			<button class="btn btn-default btn-xs js-status-btn disabled" data:status="DESATIVAR" data:url="@{/usuarios/status}">
+			<button class="btn btn-default  btn-xs  js-status-btn  disabled" data:status="DESATIVAR" data:url="@{/usuarios/status}">
 				<span>Desativar</span>
-			</button>		
+			</button>
 		</div>
 
 		<div class="table-responsive  bw-tabela-simples">
@@ -77,7 +77,7 @@
 	            <thead>
 	            	<tr>
 	            		<th class="table-usuarios-col-status">
-	            			<div class="checkbox aw-checkbox-no-margin">
+	            			<div class="checkbox  aw-checkbox-no-margin">
 	            				<input type="checkbox" class="js-selecao-todos"/>
 	            				<label></label>
 	            			</div>
@@ -93,10 +93,10 @@
 	            <tbody>
 					<tr th:each="usuario : ${pagina.conteudo}">
 						<td>
-							<div class="checkbox aw-checkbox-no-margin" th:if="${#authentication.principal.usuario.codigo != usuario.codigo}">
-								<input type="checkbox" class="js-selecao" data:codigo="${usuario.codigo}"/>
-								<label></label>
-							</div>
+							<div class="checkbox  aw-checkbox-no-margin" th:if="${#authentication.principal.usuario.codigo != usuario.codigo}">
+	            				<input type="checkbox" class="js-selecao" data:codigo="${usuario.codigo}">
+	            				<label></label>
+	            			</div>
 						</td>
 						<td th:text="${usuario.nome}"></td>
 						<td th:text="${usuario.email}"></td>
@@ -105,13 +105,12 @@
 						</td>
 						<td>
 							<th:block th:if="${usuario.ativo}">
-								<span class="label label-success">Ativo</span>
+								<span class="label  label-success">Ativo</span>
 							</th:block>
 							<th:block th:if="${not usuario.ativo}">
-								<span class="label label-danger">Inativo</span>
+								<span class="label  label-danger">Inativo</span>
 							</th:block>
 						</td>
-						<td th:text="${usuario.ativo} ? Ativo : Inativo"></td>
 	                 	<td class="text-center">
 							<a class="btn  btn-link  btn-xs" title="Editar"> 
 								<i class="glyphicon glyphicon-pencil"></i>
@@ -128,6 +127,7 @@
 	             </tbody>
          	</table>
     	 </div>
+    	 
     	 <brewer:pagination page="${pagina}"/>
 	</div>
 </section>

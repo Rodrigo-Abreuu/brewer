@@ -2,7 +2,7 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:brewer="http://brewer.algaworks.com">
-		
+	
 <body>
 <aside class="aw-layout-sidebar  js-sidebar" th:fragment="layout-sidebar">
 	<div class="aw-layout-sidebar__content">
@@ -15,7 +15,7 @@
         		</li>
         		
         		<li class="aw-menu__item">
-        			<a href="#">
+          			<a href="#">
             			<i class="fa  fa-fw  fa-credit-card"></i><span>Vendas</span>
             			<i class="aw-menu__navigation-icon  fa"></i>
           			</a>
@@ -24,12 +24,12 @@
 			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/vendas}">
 			            	<a th:href="@{/vendas/nova}">Nova venda</a>
 			            </li>
-					</ul>
-				</li>
+			        </ul>
+			    </li>
 
         		<li class="aw-menu__item">
           			<a href="#">
-            			<i class="fa  fa-fw  fa-truck"></i><span>Estoques</span>
+            			<i class="fa  fa-fw  fa-truck"></i><span>Estoque</span>
             			<i class="aw-menu__navigation-icon  fa"></i>
           			</a>
       

@@ -8,14 +8,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 	<title>Brewer</title>
-	
+
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/vendors.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/algaworks.min.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/application.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/brewer.css}"/>
 	
 	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-datepicker.standalone.min.css}"/>
-	
 	
 	<link rel="shortcut icon" th:href="@{/images/favicon.png}"/>
 
@@ -27,7 +26,6 @@
 	<![endif]-->
 </head>
 <body>
-
 <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
 <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}"/>
 
@@ -50,7 +48,7 @@
 <script th:src="@{/javascripts/vendors/bootstrap-datepicker.min.js}"></script>
 <script th:src="@{/javascripts/vendors/bootstrap-datepicker.pt-BR.min.js}"></script>
 
-<script th:src="@{/javascripts/vendors/numeral.min.js}"></script>	
+<script th:src="@{/javascripts/vendors/numeral.min.js}"></script>
 <script th:src="@{/javascripts/vendors/pt-br.min.js}"></script>
 
 <script th:src="@{/javascripts/brewer.js}"></script>
