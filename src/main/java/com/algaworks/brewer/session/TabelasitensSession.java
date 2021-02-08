@@ -47,4 +47,5 @@ public class TabelasItensSession {
 	public Object getValorTotal(String uuid) {
 		return buscarTabelaPorUuid(uuid).getValorTotal();
 	}
+	
 }
