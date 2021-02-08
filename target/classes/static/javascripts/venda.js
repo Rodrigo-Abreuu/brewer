@@ -7,9 +7,11 @@ Brewer.Venda = (function() {
 		this.valorDescontoInput = $('#valorDesconto');
 		this.valorTotalBoxContainer = $('.js-valor-total-box-container');
 		
-		this.valorTotalItens = 0;
-		this.valorFrete = 0;
-		this.valorDesconto = 0;
+		this.valorTotalItens = this.tabelaItens.valorTotal();
+		this.valorFrete = this.valorFreteInput.data('valor');
+		this.valorDesconto = this.valorDescontoInput.data('valor');
+		
+		onValoresAlterados.call(this);
 	}
 	
 	Venda.prototype.iniciar = function() {
