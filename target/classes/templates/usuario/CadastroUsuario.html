@@ -17,15 +17,13 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-10">
-					<h1>
-						Cadastro de usuário
-					</h1>
+					<h1>Cadastro de usuário</h1>
 				</div>
 				
 				<div class="col-xs-2">
 					<div class="aw-page-header-controls">
 						<a class="btn  btn-default" th:href="@{/usuarios}">
-							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisa de usuário</span>
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
 						</a>
 					</div>
 				</div>
@@ -52,7 +50,7 @@
 				
 				<div class="form-group  col-sm-3">
 					<label for="dataNascimento" class="control-label">Data de nascimento</label>
-					<input type="text" class="form-control js-date" id="dataNascimento" th:field="*{dataNascimento}" autocomplete="off"/>
+					<input type="text" class="form-control  js-date" id="dataNascimento" th:field="*{dataNascimento}" autocomplete="off"/>
 				</div>
 			</div>
 			
@@ -82,11 +80,11 @@
 					<label class="control-label">Grupos</label> 
 					<div>
 						<th:block th:each="grupo : ${grupos}">
-  							<div class="checkbox  checkbox-inline"> 
-	    						<input type="checkbox" th:value="${grupo.codigo}" th:field="*{grupos}"/>
-	    						<label th:for="${#ids.prev('grupos')}" th:text="${grupo.nome}">Administrador</label>
-    						</div>
-    					</th:block >
+	  						<div class="checkbox  checkbox-inline"> 
+		    					<input type="checkbox" th:value="${grupo.codigo}" th:field="*{grupos}"/>
+		    					<label th:for="${#ids.prev('grupos')}" th:text="${grupo.nome}">Administrador</label>
+	    					</div>
+	    				</th:block>
 					</div>
 				</div>
 			</div>
@@ -98,7 +96,7 @@
 
 <th:block layout:fragment="javascript-extra">
 	<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
-		<script>
+	<script>
 		$('.js-status').bootstrapSwitch();
 	</script>
 </th:block>
