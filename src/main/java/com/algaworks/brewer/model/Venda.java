@@ -196,6 +196,7 @@ public class Venda {
 				.map(ItemVenda::getValorTotal)
 				.reduce(BigDecimal::add)
 				.orElse(BigDecimal.ZERO);
+		
 		this.valorTotal = calcularValorTotal(valorTotalItens, getValorFrete(), getValorDesconto());		
 	}
 	
