@@ -113,7 +113,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		NumberStyleFormatter integerFormatter = new NumberStyleFormatter("#,##0");
 		conversionService.addFormatterForFieldType(Integer.class, integerFormatter);
 		
-		DateTimeFormatterRegistrar dateTimeFormatter = new  DateTimeFormatterRegistrar();
+		// API de Datas do Java 8
+		DateTimeFormatterRegistrar dateTimeFormatter = new DateTimeFormatterRegistrar();
 		dateTimeFormatter.setDateFormatter(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		dateTimeFormatter.setTimeFormatter(DateTimeFormatter.ofPattern("HH:mm"));
 		dateTimeFormatter.registerFormatters(conversionService);
@@ -131,22 +132,22 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder()
 				.maximumSize(3)
 				.expireAfterAccess(20, TimeUnit.SECONDS);
+		
 		GuavaCacheManager cacheManager = new GuavaCacheManager();
 		cacheManager.setCacheBuilder(cacheBuilder);
 		return cacheManager;
-	
 	}
 	
 	@Bean
-	public MessageSource messageSource(){
+	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource bundle = new ReloadableResourceBundleMessageSource();
 		bundle.setBasename("classpath:/messages");
 		bundle.setDefaultEncoding("UTF-8"); // http://www.utf8-chartable.de/
-		return bundle; 		
+		return bundle;
 	}
-
+	
 	@Bean
-	public DomainClassConverter<FormattingConversionService> domainClassConverter(){
+	public DomainClassConverter<FormattingConversionService> domainClassConverter() {
 		return new DomainClassConverter<FormattingConversionService>(mvcConversionService());
 	}
 	
